@@ -1,15 +1,18 @@
+import { useEffect, useRef } from "react";
 import "./App.css";
-import useCounter from "./hooks/useCounter";
-import PeopleList from "./PeopleList";
+import Button from "./components/Button";
 
 function App() {
-  const number = useCounter();
+  const button = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      button.current?.click();
+    }, 2000);
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        {number} <PeopleList />
-        <PeopleList />
-      </header>
+      <Button ref={button} title="clique em mim " />
     </div>
   );
 }
